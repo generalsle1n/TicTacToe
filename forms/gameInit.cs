@@ -15,6 +15,7 @@ namespace TicTacToe.forms
         public gameInit()
         {
             InitializeComponent();
+            FormClosing += exitGame;
         }
 
         private void startGame_Click(object sender, EventArgs e)
@@ -22,6 +23,11 @@ namespace TicTacToe.forms
             mainGame mainGame = new mainGame();
             mainGame.Show();
             this.Hide();
+        }
+
+        private void exitGame(Object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

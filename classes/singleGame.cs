@@ -13,6 +13,7 @@ namespace TicTacToe.classes
         private string playerWinner;
         private int currentPlayer = 0;
         private Guid gameGuid = new Guid();
+        private string currentWinnerSymbol;
 
         public singleGame()
         {
@@ -74,6 +75,7 @@ namespace TicTacToe.classes
                 if ((playerField[horizontalCounter] == playerField[horizontalCounter + 1]) && (playerField[horizontalCounter + 1] == playerField[horizontalCounter + 2]))
                 {
                     isFinished = true;
+                    currentWinnerSymbol = resolveIdToPlayerSymbol(horizontalCounter);
                     break;
                 }
                 else
@@ -89,6 +91,7 @@ namespace TicTacToe.classes
                 if((playerField[verticalCounter] == playerField[verticalCounter + 3]) && (playerField[verticalCounter + 3] == playerField[verticalCounter + 6]))
                 {
                     isFinished = true;
+                    currentWinnerSymbol = resolveIdToPlayerSymbol(verticalCounter);
                     break;
                 }
                 else
@@ -99,15 +102,22 @@ namespace TicTacToe.classes
 
             if ((playerField[0] == playerField[4]) && (playerField[4] == playerField[8]))
             {
+                currentWinnerSymbol = resolveIdToPlayerSymbol(0);
                 isFinished = true;
             }
 
             if ((playerField[2] == playerField[4]) && (playerField[4] == playerField[6]))
             {
+                resolveIdToPlayerSymbol(2);
                 isFinished = true;
             }
 
             return isFinished;
+        }
+
+        internal string getWinnerSymbol()
+        {
+            return currentWinnerSymbol;
         }
     }
 }

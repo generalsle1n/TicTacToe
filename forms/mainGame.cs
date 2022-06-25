@@ -1,4 +1,5 @@
 using TicTacToe.classes;
+using TicTacToe.forms;
 
 namespace TicTacToe
 {
@@ -6,6 +7,7 @@ namespace TicTacToe
     {
         private singleGame game = new singleGame();
         private const int buttonCounter = 9;
+        private gameInit gameInit = new gameInit();
 
         public mainGame()
         {
@@ -27,7 +29,10 @@ namespace TicTacToe
             updateField();
             if (game.checkIfFinished())
             {
-                Close();
+                playFieldPanel.Hide();
+                restartPanel.Show();
+
+                winnerLabel.Text = $"The {game.getWinnerSymbol()} is the Winner";
             }
         }
 
@@ -88,6 +93,12 @@ namespace TicTacToe
         private void button_8_Click(object sender, EventArgs e)
         {
             ticTacEvent(sender);
+        }
+
+        private void goToMainMenu_Click(object sender, EventArgs e)
+        {
+            Close();
+            gameInit.Show();
         }
     }
 }
